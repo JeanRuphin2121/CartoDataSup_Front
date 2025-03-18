@@ -1,0 +1,7 @@
+.aside-menu-ul {
+  padding-right: 1rem;
+}
+
+.aside-menu-ul .nav-link {
+  padding-left: 0rem!important;
+}
