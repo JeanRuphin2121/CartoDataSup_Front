@@ -56,6 +56,7 @@ export default function Dashboard() {
     // <!-- Content Wrapper. Contains page content -->
   <div className="content-wrapper">
     {/* <!-- Content Header (Page header) --> */}
+
     <div className="content-header">
       <div className="container-fluid">
         <div className="row mb-2">
@@ -74,7 +75,82 @@ export default function Dashboard() {
     </div>
     {/* <!-- /.content-header --> */}
 
-    {/* <!-- Main content --> */}
+    {/* <section className="content">
+      <div className="container-fluid">
+
+      <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary collapsed-card">
+              <div class="card-header">
+
+                <h3 class="card-title">Liste des indicateurs</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+
+              </div>
+
+              <div class="card-body pad table-responsive">
+
+                <table class="table table-borderless text-center">
+                  <tr>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-success btn-xs">Comparaison Public vs Privé</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Répartition géographique du nombre de formations</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Répartition des candidats par type de formation</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Ratio capacité d’accueil / Nbre Candidats</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Taux de remplissage des formations</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Taux d’admission par formation</button>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Répartition des admis par type de bac</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Répartition des admis par type de bac</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Impact du statut boursier sur l’admission</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Proportion filles-garcons dans les admissions</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Analyse des délais d’admission</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-block bg-gradient-secondary btn-xs">Secondary</button>
+                    </td>
+                    
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section> */}
+
     <section className="content">
       <div className="container-fluid">
         {/* <!-- Small boxes (Stat box) --> */}
