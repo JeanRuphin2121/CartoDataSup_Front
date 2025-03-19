@@ -55,7 +55,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-calendar"></i>
               <p>Session</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>2024</option>
               <option>2023</option>
               <option>2022</option>
@@ -69,7 +69,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Académie</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Toutes</option>
               <option>Paris</option>
               <option>Lyon</option>
@@ -83,7 +83,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Département</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Tous</option>
               <option>Vaucluse</option>
               <option>Hautes-Alpes</option>
@@ -97,7 +97,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Communes</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Toutes</option>
               <option>Arles</option>
               <option>Aix-en-Provence</option>
@@ -111,7 +111,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Région</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Toutes</option>
               <option></option>
               <option></option>
@@ -125,7 +125,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-school"></i>
               <p>Établissement</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Tous</option>
               <option>Public</option>
               <option>Privé</option>
@@ -138,7 +138,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-graduation-cap"></i>
               <p>Formation</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Toutes</option>
               <option>CPGE</option>
               <option>BTS</option>
@@ -153,7 +153,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-filter"></i>
               <p>Formation Sélective</p>
             </a>
-            <select className="form-control">
+            <select className="custom-select">
               <option>Oui</option>
               <option>Non</option>
             </select>
