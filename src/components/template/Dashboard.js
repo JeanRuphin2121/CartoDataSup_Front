@@ -1,6 +1,60 @@
-export default function Dashboard() {
-  return (
+import { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
+import $ from "jquery";
 
+export default function Dashboard() {
+
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null); // Stocke l'instance du graphique
+
+
+  useEffect(() => {
+    // Vérifier si jQuery fonctionne
+    console.log("jQuery version:", $.fn.jquery);
+
+    // 🔴 Détruire l'ancienne instance si elle existe
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
+    }
+
+    // AREA CHART
+    const areaChartCanvas = document.getElementById("areaChart2").getContext("2d");
+    const areaChartData = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      datasets: [
+        {
+          label: "Digital Goods",
+          backgroundColor: "rgba(60,141,188,0.9)",
+          borderColor: "rgba(60,141,188,0.8)",
+          data: [28, 48, 40, 19, 86, 27, 90],
+        },
+        {
+          label: "Electronics",
+          backgroundColor: "rgba(210, 214, 222, 1)",
+          borderColor: "rgba(210, 214, 222, 1)",
+          data: [65, 59, 80, 81, 56, 55, 40],
+        },
+      ],
+    };
+
+    // 🔵 Créer un nouveau graphique
+    chartInstance.current = new Chart(areaChartCanvas, {
+      type: "line",
+      data: areaChartData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { grid: { display: false } },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+
+  }, []);
+
+
+  return (
     // <!-- Content Wrapper. Contains page content -->
   <div className="content-wrapper">
     {/* <!-- Content Header (Page header) --> */}
@@ -256,7 +310,7 @@ export default function Dashboard() {
               </div>
               <div className="card-body">
                 <div className="chart">
-                  <canvas id="lineChart" style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}></canvas>
+                  <canvas id="areaChart2" ref={chartRef} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}></canvas>
                 </div>
               </div>
             </div>
