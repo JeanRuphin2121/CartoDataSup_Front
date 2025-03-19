@@ -1,55 +1,53 @@
 import { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
 import $ from "jquery";
+
+import {  Line, Bar, Pie  } from "react-chartjs-2";
+import { Chart, registerables } from "chart.js";
+
+// 🔵 Enregistrer les modules nécessaires
+Chart.register(...registerables);
 
 export default function Dashboard() {
 
-  const chartRef = useRef(null);
-  const chartInstance = useRef(null); // Stocke l'instance du graphique
+  // 📊 Données pour le Pie Chart
+  const pieData = {
+    labels: ["Chrome", "Firefox", "Safari", "Opera"],
+    datasets: [
+      {
+        data: [40, 30, 20, 10],
+        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef"],
+      },
+    ],
+  };
 
+  const lineBarData = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Digital Goods",
+        backgroundColor: "rgba(60,141,188,0.9)",
+        borderColor: "rgba(60,141,188,0.8)",
+        data: [28, 48, 40, 19, 86, 27, 90],
+      },
+      {
+        label: "Electronics",
+        backgroundColor: "rgba(210, 214, 222, 1)",
+        borderColor: "rgba(210, 214, 222, 1)",
+        data: [65, 59, 80, 81, 56, 55, 40],
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   useEffect(() => {
     // Vérifier si jQuery fonctionne
     console.log("jQuery version:", $.fn.jquery);
 
-    // 🔴 Détruire l'ancienne instance si elle existe
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    // AREA CHART
-    const areaChartCanvas = document.getElementById("areaChart2").getContext("2d");
-    const areaChartData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      datasets: [
-        {
-          label: "Digital Goods",
-          backgroundColor: "rgba(60,141,188,0.9)",
-          borderColor: "rgba(60,141,188,0.8)",
-          data: [28, 48, 40, 19, 86, 27, 90],
-        },
-        {
-          label: "Electronics",
-          backgroundColor: "rgba(210, 214, 222, 1)",
-          borderColor: "rgba(210, 214, 222, 1)",
-          data: [65, 59, 80, 81, 56, 55, 40],
-        },
-      ],
-    };
-
-    // 🔵 Créer un nouveau graphique
-    chartInstance.current = new Chart(areaChartCanvas, {
-      type: "line",
-      data: areaChartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: { grid: { display: false } },
-          y: { grid: { display: false } },
-        },
-      },
-    });
+    
 
   }, []);
 
@@ -273,17 +271,7 @@ export default function Dashboard() {
             </div>
           </div> */}
 
-          
-          
         </div>
-        
-        {/* <!-- Main row --> */}
-        <div className="row">
-
-            <div > Content to put here</div>
-          
-        </div>
-        {/* <!-- /.row (main row) --> */}
       </div>
       {/* <!-- /.container-fluid --> */}
     </section>
@@ -310,7 +298,60 @@ export default function Dashboard() {
               </div>
               <div className="card-body">
                 <div className="chart">
-                  <canvas id="areaChart2" ref={chartRef} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}></canvas>
+
+                  <Pie data={pieData} options={options} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}} />
+
+                </div>
+              </div>
+            </div>
+              
+          </div>
+          <div className="col-md-6">
+
+            <div className="card card-info">
+              <div className="card-header">
+                <h3 className="card-title">Line Chart</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
+                    <i className="fas fa-minus"></i>
+                  </button>
+                  <button type="button" className="btn btn-tool" data-card-widget="remove">
+                    <i className="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="chart">
+
+                  <Bar data={lineBarData} options={options} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}} />
+
+                </div>
+              </div>
+            </div>
+              
+          </div>
+
+          <div className="col-md-6">
+
+            <div className="card card-info">
+              <div className="card-header">
+                <h3 className="card-title">Line Chart</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
+                    <i className="fas fa-minus"></i>
+                  </button>
+                  <button type="button" className="btn btn-tool" data-card-widget="remove">
+                    <i className="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="chart">
+
+                  <Line data={lineBarData} options={options} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}} />
+
                 </div>
               </div>
             </div>
