@@ -71,9 +71,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid --> */}
     </div>
-    {/* <!-- /.content-header --> */}
 
     {/* <section className="content">
       <div className="container-fluid">
@@ -153,7 +151,6 @@ export default function Dashboard() {
 
     <section className="content">
       <div className="container-fluid">
-        {/* <!-- Small boxes (Stat box) --> */}
         <div className="row">
           <div className="col-md-3">
             <div className="card card-primary collapsed-card">
@@ -331,7 +328,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* <div className="col-md-3">
+          <div className="col-md-3">
             <div className="card card-secondary collapsed-card">
               <div className="card-header">
                 <h3 className="card-title insight-title-h3">Mobilité des étudiants</h3>
@@ -345,13 +342,11 @@ export default function Dashboard() {
               Identifier les académies où les étudiants restent ou partent
               </div>
             </div>
-          </div> */}
+          </div>
 
         </div>
       </div>
-      {/* <!-- /.container-fluid --> */}
     </section>
-    {/* <!-- /.content --> */}
 
     <section>
       <div className="container-fluid">
