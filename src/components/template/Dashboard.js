@@ -8,7 +8,7 @@ export default function Dashboard() {
       <div className="container-fluid">
         <div className="row mb-2">
           <div className="col-sm-6">
-            <h1 className="m-0">Dashboard</h1>
+            <h1 className="m-0">Indicateurs</h1>
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
@@ -27,66 +27,200 @@ export default function Dashboard() {
       <div className="container-fluid">
         {/* <!-- Small boxes (Stat box) --> */}
         <div className="row">
-          <div className="col-lg-3 col-6">
-            {/* <!-- small box --> */}
-            <div className="small-box bg-info">
-              <div className="inner">
-                <h3>150</h3>
+          <div className="col-md-3">
+            <div className="card card-primary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Comparaison Public vs Privé</h3>
 
-                <p>New Orders</p>
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
-              <div className="icon">
-                <i className="ion ion-bag"></i>
+              <div className="card-body">
+              Voir si les formations privées sont plus sélectives
               </div>
-              <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          {/* <!-- ./col --> */}
-          <div className="col-lg-3 col-6">
-            {/* <!-- small box --> */}
-            <div className="small-box bg-success">
-              <div className="inner">
-                <h3>53<sup style={{fontSize: 20}}>%</sup></h3>
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Répartition géographique du nombre de formations</h3>
 
-                <p>Bounce Rate</p>
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-minus"></i>
+                  </button>
+                </div>
               </div>
-              <div className="icon">
-                <i className="ion ion-stats-bars"></i>
+              <div className="card-body">
+              Visualiser la concentration des formations dans certaines régions
               </div>
-              <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          {/* <!-- ./col --> */}
-          <div className="col-lg-3 col-6">
-            {/* <!-- small box --> */}
-            <div className="small-box bg-warning">
-              <div className="inner">
-                <h3>44</h3>
 
-                <p>User Registrations</p>
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Répartition des candidats par type de formation</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
-              <div className="icon">
-                <i className="ion ion-person-add"></i>
+              <div className="card-body">
+              Comparer les formations populaires et leur sélectivité
               </div>
-              <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          {/* <!-- ./col --> */}
-          <div className="col-lg-3 col-6">
-            {/* <!-- small box --> */}
-            <div className="small-box bg-danger">
-              <div className="inner">
-                <h3>65</h3>
 
-                <p>Unique Visitors</p>
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Ratio capacité d’accueil / Nbre Candidats </h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
-              <div className="icon">
-                <i className="ion ion-pie-graph"></i>
+              <div className="card-body">
+                Identifier les formations sous tension ou en sous-effectif d'accueil
               </div>
-              <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          {/* <!-- ./col --> */}
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Taux de remplissage des formations</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                Voir si certaines formations peinent à remplir leurs places
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Taux d’admission par formation</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+              `Identifier les formations les plus compétitives et guider les choix d’orientations
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Répartition des admis par type de bac</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                Profil des admis suivant le type de bac obtenu
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Répartition des mentions des admis</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+              Part des admis avec mention (TB, B, AB, sans mention)
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Impact du statut boursier sur l’admission</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+              Analyser l'impact du status boursier dans l'accès aux formations
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Proportion filles-garcons dans les admissions</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                Analyser l'impact du genre dans l'accès aux formations
+
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Analyse des délais d’admission</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+              Comprendre quand les candidats reçoivent leurs propositions d’admission
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="col-md-3">
+            <div className="card card-secondary collapsed-card">
+              <div className="card-header">
+                <h3 className="card-title insight-title-h3">Mobilité des étudiants</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse"><i className="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+              Identifier les académies où les étudiants restent ou partent
+              </div>
+            </div>
+          </div> */}
+
+          
+          
         </div>
         
         {/* <!-- Main row --> */}
@@ -100,6 +234,52 @@ export default function Dashboard() {
       {/* <!-- /.container-fluid --> */}
     </section>
     {/* <!-- /.content --> */}
+
+    <section>
+      <div className="container-fluid">
+        <div className="row">
+    
+          <div className="col-md-6">
+
+            <div className="card card-info">
+              <div className="card-header">
+                <h3 className="card-title">Line Chart</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
+                    <i className="fas fa-minus"></i>
+                  </button>
+                  <button type="button" className="btn btn-tool" data-card-widget="remove">
+                    <i className="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="chart">
+                  <canvas id="lineChart" style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}></canvas>
+                </div>
+              </div>
+            </div>
+              
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div className="container-fluid ">
+      {/* <!-- Indicateurs Clés (4 cartes alignées) --> */}
+
+        {/* <!-- Boutons d'Action --> */}
+        <div className="row text-center">
+            <button className="btn btn-primary">🔄 Mettre à jour</button>
+            <button className="btn btn-success">📤 Exporter Graphiques</button>
+            <button className="btn btn-warning">📩 Télécharger Rapport</button>
+        </div>
+      </div>
+    </section>
   </div>
 
   );
