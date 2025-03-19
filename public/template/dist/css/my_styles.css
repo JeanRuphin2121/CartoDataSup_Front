@@ -1,5 +1,6 @@
 .aside-menu-ul {
-  padding-right: 1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .aside-menu-ul .nav-link {
