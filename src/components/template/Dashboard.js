@@ -6,11 +6,15 @@ import {  Line, Bar, Pie  } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 
 import axios from "axios";
+import { useAuth } from "../../hooks/AuthProvider";
+
 
 // 🔵 Enregistrer les modules nécessaires
 Chart.register(...registerables);
 
 export default function Dashboard() {
+  
+  const { user, token, logOut } = useAuth();
 
   // 📊 Données pour le Pie Chart
   const pieData = {
@@ -53,26 +57,30 @@ export default function Dashboard() {
     console.log("jQuery version:", $.fn.jquery);
 
     console.log("Chargement des données...");
-    axios.get("http://localhost:8000/api/candidatures/")
-      .then(response => {
-        console.log("Données chargées avec succès:", response.data);
-        // Traiter les données pour le graphique
-        // Exemple de traitement des données
-        // Assurez-vous que la structure des données correspond à ce que vous attendez
-        const data = response.data;
-        const labels = data.map(item => item.formation.name);
-        const values = data.map(item => item.admission_rate);
+    console.log("Token:", token);
+    axios.get("http://localhost:8000/api/candidatures/", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(response => {
+      console.log("Données chargées avec succès:", response.data);
+      // Traiter les données pour le graphique
+      // Exemple de traitement des données
+      // Assurez-vous que la structure des données correspond à ce que vous attendez
+      const data = response.data;
+      const labels = data.map(item => item.formation.name);
+      const values = data.map(item => item.admission_rate);
 
-        setChartData({
-          labels: labels,
-          datasets: [{
-            label: "Taux d'admission (%)",
-            data: values,
-            backgroundColor: "rgba(75,192,192,0.6)",
-          }],
-        });
-      })
-      .catch(error => console.error("Erreur de chargement", error));
+      setChartData({
+        labels: labels,
+        datasets: [{
+          label: "Taux d'admission (%)",
+          data: values,
+          backgroundColor: "rgba(75,192,192,0.6)",
+        }],
+      });
+    })
+    .catch(error => console.error("Erreur de chargement", error));
 
   }, []);
 
