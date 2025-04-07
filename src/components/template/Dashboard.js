@@ -1,8 +1,11 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
+
 import $ from "jquery";
 
 import {  Line, Bar, Pie  } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
+
+import axios from "axios";
 
 // 🔵 Enregistrer les modules nécessaires
 Chart.register(...registerables);
@@ -43,11 +46,33 @@ export default function Dashboard() {
     maintainAspectRatio: false,
   };
 
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
+
   useEffect(() => {
     // Vérifier si jQuery fonctionne
     console.log("jQuery version:", $.fn.jquery);
 
-    
+    console.log("Chargement des données...");
+    axios.get("http://localhost:8000/api/candidatures/")
+      .then(response => {
+        console.log("Données chargées avec succès:", response.data);
+        // Traiter les données pour le graphique
+        // Exemple de traitement des données
+        // Assurez-vous que la structure des données correspond à ce que vous attendez
+        const data = response.data;
+        const labels = data.map(item => item.formation.name);
+        const values = data.map(item => item.admission_rate);
+
+        setChartData({
+          labels: labels,
+          datasets: [{
+            label: "Taux d'admission (%)",
+            data: values,
+            backgroundColor: "rgba(75,192,192,0.6)",
+          }],
+        });
+      })
+      .catch(error => console.error("Erreur de chargement", error));
 
   }, []);
 
@@ -149,7 +174,7 @@ export default function Dashboard() {
       </div>
     </section> */}
 
-    <section className="content">
+    {/* <section className="content">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
@@ -346,7 +371,7 @@ export default function Dashboard() {
 
         </div>
       </div>
-    </section>
+    </section> */}
 
     <section>
       <div className="container-fluid">
@@ -396,6 +421,32 @@ export default function Dashboard() {
                 <div className="chart">
 
                   <Bar data={lineBarData} options={options} style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}} />
+
+                </div>
+              </div>
+            </div>
+              
+          </div>
+
+          <div className="col-md-12">
+
+            <div className="card card-info">
+              <div className="card-header">
+                <h3 className="card-title">Taux d'admission</h3>
+
+                <div className="card-tools">
+                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
+                    <i className="fas fa-minus"></i>
+                  </button>
+                  <button type="button" className="btn btn-tool" data-card-widget="remove">
+                    <i className="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="chart">
+
+                  <Bar data={chartData} />
 
                 </div>
               </div>
