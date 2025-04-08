@@ -20,7 +20,7 @@ const PublicVsPrivate = () => {
 
   useEffect(() => {
     fetchStats();
-  }, [commune, academie]);
+  }, [filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
   // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchStats = async () => {
@@ -28,7 +28,7 @@ const PublicVsPrivate = () => {
         console.log("token", token);
         const response = await axios.get(API_BASE_URL + "public-vs-private/", 
             {
-                params: { commune, academie },
+                params: filters,
                 headers: {
                 Authorization: `Bearer ${token}`
                 }
