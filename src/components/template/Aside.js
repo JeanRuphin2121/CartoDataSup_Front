@@ -1,5 +1,49 @@
+import { useAuth } from '../../hooks/AuthProvider';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { API_BASE_URL } from '../../constants/constant';
 
 export default function Aside() {
+
+  const [data, setData] = useState([]);
+  const { user, token, logOut } = useAuth();
+
+  const [annee, setAnnee] = useState(null);
+  const [academy, setAcademie] = useState(null);
+  const [departement, setDepartement] = useState(null);
+  const [commune, setCommune] = useState(null);
+  const [region, setRegion] = useState(null);
+  const [etablissement, setEtablissement] = useState(null);
+
+  useEffect(() => {
+      fetchOptions();
+    },[annee, academy, departement, commune, region, etablissement]);
+
+    // Fonction pour récupérer les données statistiques et préparation pour les graphiques
+  const fetchOptions = async () => {
+    try {
+        console.log("token", token);
+        const response = await axios.get(API_BASE_URL + "filters/", 
+            {
+              params: { annee, academy, departement, commune, region, etablissement },
+                headers: {
+                Authorization: `Bearer ${token}`
+                }
+            });
+        setData(response.data);
+
+    } catch (error) {
+      console.error('Erreur chargement données :', error);
+        if (error.response && error.response.status === 401) {
+            // Si le token est expiré, déconnecter l'utilisateur
+            if (error.response.data.code === "token_not_valid") {
+              console.log("token not valid");
+              logOut();
+            }
+        }
+    }
+  };
+
   return (
     
     // <!-- Main Sidebar Container -->
@@ -55,11 +99,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-calendar"></i>
               <p>Session</p>
             </a>
-            <select className="custom-select">
-              <option>2024</option>
-              <option>2023</option>
-              <option>2022</option>
-              <option>2021</option>
+            <select className="custom-select" onChange={e => setAnnee(e.target.value)}>
+            {data.annees && data.annees.map((annee) => (
+              <option key={annee} value={annee}>
+                {annee}
+              </option>
+            ))}
             </select>
           </li>
           
@@ -69,11 +114,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Académie</p>
             </a>
-            <select className="custom-select">
-              <option>Toutes</option>
-              <option>Paris</option>
-              <option>Lyon</option>
-              <option>Marseille</option>
+            <select className="custom-select" onChange={e => setAcademie(e.target.value)}>
+            {data.academies && data.academies.map((academie) => (
+              <option key={academie} value={academie}>
+                {academie}
+              </option>
+            ))}
             </select>
           </li>
 
@@ -83,11 +129,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Département</p>
             </a>
-            <select className="custom-select">
-              <option>Tous</option>
-              <option>Vaucluse</option>
-              <option>Hautes-Alpes</option>
-              <option>Marseille</option>
+            <select className="custom-select"   onChange={e => setDepartement(e.target.value)}>
+            {data.departements && data.departements.map((departement) => (
+              <option key={departement} value={departement}>
+                {departement}
+              </option>
+            ))}
             </select>
           </li>
 
@@ -97,11 +144,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Communes</p>
             </a>
-            <select className="custom-select">
-              <option>Toutes</option>
-              <option>Arles</option>
-              <option>Aix-en-Provence</option>
-              <option>Avignon</option>
+            <select className="custom-select"   onChange={e => setCommune(e.target.value)}>
+            {data.communes && data.communes.map((commune) => (
+              <option key={commune} value={commune}>
+                {commune}
+              </option>
+            ))}
             </select>
           </li>
 
@@ -111,11 +159,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Région</p>
             </a>
-            <select className="custom-select">
-              <option>Toutes</option>
-              <option></option>
-              <option></option>
-              <option></option>
+            <select className="custom-select"  onChange={e => setRegion(e.target.value)}>
+            {data.regions && data.regions.map((region) => (
+              <option key={region} value={region}>
+                {region}
+              </option>
+            ))}
             </select>
           </li>
 
@@ -125,10 +174,12 @@ export default function Aside() {
               <i className="nav-icon fas fa-school"></i>
               <p>Établissement</p>
             </a>
-            <select className="custom-select">
-              <option>Tous</option>
-              <option>Public</option>
-              <option>Privé</option>
+            <select className="custom-select" onChange={e => setEtablissement(e.target.value)}>
+            {data.etablissements && data.etablissements.map((etablissement) => (
+              <option key={etablissement} value={etablissement}>
+                {etablissement}
+              </option>
+            ))}
             </select>
           </li>
 
