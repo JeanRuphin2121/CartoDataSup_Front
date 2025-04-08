@@ -5,6 +5,8 @@ import { API_BASE_URL } from "../constants/constant";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [errorLogin, setErrorLogin] = useState(null);
+
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken") || "");
@@ -26,16 +28,18 @@ const AuthProvider = ({ children }) => {
         console.log(res);
         setUser(res.data.user);
         setToken(res.data.token);
-        setRefreshToken(res.data.setRefreshToken);
+        setRefreshToken(res.data.refreshToken);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("refreshToken", res.data.refreshToken);
 
         console.log("localStorage", localStorage.getItem("token"));
         console.log("navigating to dashboard");
 
+        setErrorLogin(null);
         navigate("/dashboard");
         return;
       }
+      setErrorLogin(res.error);
       throw new Error(res.message);
     } catch (err) {
       console.error(err);
@@ -51,7 +55,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, loginAction, logOut }}>
+    <AuthContext.Provider value={{ token, refreshToken, errorLogin, user, loginAction, logOut }}>
       {children}
     </AuthContext.Provider>
   );
