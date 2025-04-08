@@ -9,23 +9,22 @@ import Dashboard from "./components/template/Dashboard";
 import AuthProvider from "./hooks/AuthProvider";
 import PrivateRoute from "./router/route";
 import PublicHome from './pages/public/PublicHome';
+import PublicVsPrivate from './pages/user/insights/PublicVsPrivate';
 
 function App() {
   return (
-    <>
-    <div className="App wrapper">
-      
+    <>      
         <AuthProvider>
           <Routes>
           <Route path="/" element={<PublicHome />} />
             <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<PublicVsPrivate />} />
+              <Route path="/public-vs-private" element={<PublicVsPrivate />} />
             </Route>
             {/* Other routes */}
           </Routes>
         </AuthProvider>
-    </div>
 
 
       {/* <div className="wrapper"> */}
