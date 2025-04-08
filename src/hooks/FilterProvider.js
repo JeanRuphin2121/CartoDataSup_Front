@@ -9,7 +9,10 @@ export const FilterProvider = ({ children }) => {
     departement: null,
     commune: null,
     region: null,
+    status_institution: null,
     etablissement: null,
+    formation_selectivity: null,
+    formation: null,
   });
 
   return (

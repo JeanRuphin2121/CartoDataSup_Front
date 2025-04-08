@@ -10,16 +10,9 @@ export default function Aside() {
   const [data, setData] = useState([]);
   const { user, token, logOut } = useAuth();
 
-  const [annee, setAnnee] = useState(null);
-  const [academy, setAcademie] = useState(null);
-  const [departement, setDepartement] = useState(null);
-  const [commune, setCommune] = useState(null);
-  const [region, setRegion] = useState(null);
-  const [etablissement, setEtablissement] = useState(null);
-
   useEffect(() => {
       fetchOptions();
-  },[filters.annee, filters.academy, filters.departement, commune, filters.region, filters.etablissement]);
+  },[filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
     // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchOptions = async () => {
@@ -48,25 +41,51 @@ export default function Aside() {
   };
 
   const handleAnneeChange = (value) => {
-    setFilters({ ...filters, annee: value });
+    setFilters({ ...filters, 
+      annee: value === "" ? null : value,});
+    };
+    
+  const handleRegionChange = (value) => {
+    setFilters({ ...filters, region: value === "" ? null : value, });
   };
-
   const handleAcademyChange = (value) => {
-    setFilters({ ...filters, academy: value });
+    setFilters({ ...filters, academy: value === "" ? null : value, });
   };
 
   const handleDepartementChange = (value) => {
-    setFilters({ ...filters, departement: value });
+    setFilters({ ...filters, departement: value === "" ? null : value, });
   };
   const handleCommuneChange = (value) => {
-    setFilters({ ...filters, commune: value });
+    setFilters({ ...filters, commune: value === "" ? null : value, });
   };
-  const handleRegionChange = (value) => {
-    setFilters({ ...filters, region: value });
+  const handleStatusInstititutionChange = (value) => {
+    setFilters({ ...filters, status_institution: value === "" ? null : value, });
   };
   const handleEtablissementChange = (value) => {
-    setFilters({ ...filters, etablissement: value });
+    setFilters({ ...filters, etablissement: value === "" ? null : value, });
   };
+  const handleFormationSelectivityChange = (value) => {
+    setFilters({ ...filters, formation_selectivity: value === "" ? null : value,});
+  };
+  const handleFormationChange = (value) => {
+    setFilters({ ...filters, formation: value === "" ? null : value, });
+  };
+
+  const handleResetFilters = () => {
+    // Réinitialiser tous les filtres
+    setFilters({
+      region: null,
+      annee: null,
+      academy: null,
+      departement: null,
+      commune: null,
+      status_institution: null,
+      etablissement: null,
+      formation_selectivity: null,
+      formation: null,
+    });
+    fetchOptions();
+  }
 
   return (
     
@@ -132,6 +151,22 @@ export default function Aside() {
             ))}
             </select>
           </li>
+
+          {/* Filtre Région */}
+          <li className="nav-item mb-2">
+            <a className="nav-link">
+              <i className="nav-icon fas fa-university"></i>
+              <p>Région</p>
+            </a>
+            <select className="custom-select"  onChange={(e) => handleRegionChange(e.target.value)}>
+            <option value=""> Toutes </option>
+            {data.regions && data.regions.map((region) => (
+              <option key={region} value={region}>
+                {region}
+              </option>
+            ))}
+            </select>
+          </li>
           
           {/* Filtre Académie */}
           <li className="nav-item mb-2">
@@ -140,6 +175,7 @@ export default function Aside() {
               <p>Académie</p>
             </a>
             <select className="custom-select" onChange={(e) => handleAcademyChange(e.target.value)}>
+            <option value=""> Toutes </option>
             {data.academies && data.academies.map((academie) => (
               <option key={academie} value={academie}>
                 {academie}
@@ -155,6 +191,7 @@ export default function Aside() {
               <p>Département</p>
             </a>
             <select className="custom-select"   onChange={(e) => handleDepartementChange(e.target.value)}>
+            <option value=""> Tous </option>
             {data.departements && data.departements.map((departement) => (
               <option key={departement} value={departement}>
                 {departement}
@@ -170,6 +207,7 @@ export default function Aside() {
               <p>Communes</p>
             </a>
             <select className="custom-select"   onChange={(e) => handleCommuneChange(e.target.value)}>
+            <option value=""> Toutes </option>
             {data.communes && data.communes.map((commune) => (
               <option key={commune} value={commune}>
                 {commune}
@@ -178,28 +216,32 @@ export default function Aside() {
             </select>
           </li>
 
-          {/* Filtre Région */}
+          
+
+          {/* Filtre Type d'Établissement */}
           <li className="nav-item mb-2">
             <a className="nav-link">
-              <i className="nav-icon fas fa-university"></i>
-              <p>Région</p>
+              <i className="nav-icon fas fa-school"></i>
+              <p>Secteur établissement</p>
             </a>
-            <select className="custom-select"  onChange={(e) => handleRegionChange(e.target.value)}>
-            {data.regions && data.regions.map((region) => (
-              <option key={region} value={region}>
-                {region}
+            <select className="custom-select" onChange={(e) => handleStatusInstititutionChange(e.target.value)}>
+            <option value=""> Tous </option>
+            {data.status_institutions && data.status_institutions.map((status_institution) => (
+              <option key={status_institution} value={status_institution}>
+                {status_institution}
               </option>
             ))}
             </select>
           </li>
 
-          {/* Filtre Type d'Établissement */}
+          {/* Filtre d'Établissements */}
           <li className="nav-item mb-2">
             <a className="nav-link">
               <i className="nav-icon fas fa-school"></i>
               <p>Établissement</p>
             </a>
             <select className="custom-select" onChange={(e) => handleEtablissementChange(e.target.value)}>
+            <option value=""> Tous </option>
             {data.etablissements && data.etablissements.map((etablissement) => (
               <option key={etablissement} value={etablissement}>
                 {etablissement}
@@ -208,37 +250,43 @@ export default function Aside() {
             </select>
           </li>
 
-          {/* Filtre Type de Formation */}
+          {/* Filtre formation selective */}
           <li className="nav-item mb-2">
             <a className="nav-link">
-              <i className="nav-icon fas fa-graduation-cap"></i>
-              <p>Formation</p>
+              <i className="nav-icon fas fa-school"></i>
+              <p>Formation sélective</p>
             </a>
-            <select className="custom-select">
-              <option>Toutes</option>
-              <option>CPGE</option>
-              <option>BTS</option>
-              <option>BUT</option>
-              <option>Licence</option>
+            <select className="custom-select" onChange={(e) => handleFormationSelectivityChange(e.target.value)}>
+            <option value=""> Toutes </option>
+            {data.formation_selectivities && data.formation_selectivities.map((formation_selectivity) => (
+              <option key={formation_selectivity} value={formation_selectivity}>
+                {formation_selectivity == true ? "Oui" : "Non"}
+              </option>
+            ))}
             </select>
           </li>
 
-          {/* Filtre Sélectivité */}
-          <li className="nav-item mb-3">
+
+          {/* Filtre formations */}
+          <li className="nav-item mb-4">
             <a className="nav-link">
-              <i className="nav-icon fas fa-filter"></i>
-              <p>Formation Sélective</p>
+              <i className="nav-icon fas fa-school"></i>
+              <p>Formations</p>
             </a>
-            <select className="custom-select">
-              <option>Oui</option>
-              <option>Non</option>
+            <select className="custom-select" onChange={(e) => handleFormationChange(e.target.value)}>
+            <option value=""> Toutes </option>
+            {data.formations && data.formations.map((formation) => (
+              <option key={formation} value={formation}>
+                {formation}
+              </option>
+            ))}
             </select>
           </li>
 
           {/* Bouton Appliquer les Filtres */}
           <li className="nav-item mb-2">
-            <button className="btn btn-primary btn-block">
-              <i className="fas fa-filter"></i> Appliquer les filtres
+            <button onClick={(e) => handleResetFilters(e.target.value)} className="btn btn-primary btn-block">
+              Réinitialiser
             </button>
           </li>
 
