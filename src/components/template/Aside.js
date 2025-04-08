@@ -2,9 +2,11 @@ import { useAuth } from '../../hooks/AuthProvider';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../constants/constant';
+import { useFilters } from '../../hooks/FilterProvider';
 
 export default function Aside() {
 
+  const { filters, setFilters } = useFilters();
   const [data, setData] = useState([]);
   const { user, token, logOut } = useAuth();
 
@@ -17,7 +19,7 @@ export default function Aside() {
 
   useEffect(() => {
       fetchOptions();
-    },[annee, academy, departement, commune, region, etablissement]);
+  },[filters.annee, filters.academy, filters.departement, commune, filters.region, filters.etablissement]);
 
     // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchOptions = async () => {
@@ -25,23 +27,45 @@ export default function Aside() {
         console.log("token", token);
         const response = await axios.get(API_BASE_URL + "filters/", 
             {
-              params: { annee, academy, departement, commune, region, etablissement },
+              params: filters,
                 headers: {
-                Authorization: `Bearer ${token}`
+                  Authorization: `Bearer ${token}`
                 }
             });
         setData(response.data);
 
     } catch (error) {
-      console.error('Erreur chargement données :', error);
-        if (error.response && error.response.status === 401) {
-            // Si le token est expiré, déconnecter l'utilisateur
-            if (error.response.data.code === "token_not_valid") {
-              console.log("token not valid");
-              logOut();
-            }
-        }
+
+      console.error("Erreur chargement données :", error);
+      if (
+        error.response &&
+        error.response.status === 401 &&
+        error.response.data.code === "token_not_valid"
+      ) {
+        logOut();
+      }
     }
+  };
+
+  const handleAnneeChange = (value) => {
+    setFilters({ ...filters, annee: value });
+  };
+
+  const handleAcademyChange = (value) => {
+    setFilters({ ...filters, academy: value });
+  };
+
+  const handleDepartementChange = (value) => {
+    setFilters({ ...filters, departement: value });
+  };
+  const handleCommuneChange = (value) => {
+    setFilters({ ...filters, commune: value });
+  };
+  const handleRegionChange = (value) => {
+    setFilters({ ...filters, region: value });
+  };
+  const handleEtablissementChange = (value) => {
+    setFilters({ ...filters, etablissement: value });
   };
 
   return (
@@ -99,7 +123,8 @@ export default function Aside() {
               <i className="nav-icon fas fa-calendar"></i>
               <p>Session</p>
             </a>
-            <select className="custom-select" onChange={e => setAnnee(e.target.value)}>
+            <select className="custom-select" onChange={(e) => handleAnneeChange(e.target.value)}>
+              <option value=""> Toutes </option>
             {data.annees && data.annees.map((annee) => (
               <option key={annee} value={annee}>
                 {annee}
@@ -114,7 +139,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Académie</p>
             </a>
-            <select className="custom-select" onChange={e => setAcademie(e.target.value)}>
+            <select className="custom-select" onChange={(e) => handleAcademyChange(e.target.value)}>
             {data.academies && data.academies.map((academie) => (
               <option key={academie} value={academie}>
                 {academie}
@@ -129,7 +154,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Département</p>
             </a>
-            <select className="custom-select"   onChange={e => setDepartement(e.target.value)}>
+            <select className="custom-select"   onChange={(e) => handleDepartementChange(e.target.value)}>
             {data.departements && data.departements.map((departement) => (
               <option key={departement} value={departement}>
                 {departement}
@@ -144,7 +169,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Communes</p>
             </a>
-            <select className="custom-select"   onChange={e => setCommune(e.target.value)}>
+            <select className="custom-select"   onChange={(e) => handleCommuneChange(e.target.value)}>
             {data.communes && data.communes.map((commune) => (
               <option key={commune} value={commune}>
                 {commune}
@@ -159,7 +184,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-university"></i>
               <p>Région</p>
             </a>
-            <select className="custom-select"  onChange={e => setRegion(e.target.value)}>
+            <select className="custom-select"  onChange={(e) => handleRegionChange(e.target.value)}>
             {data.regions && data.regions.map((region) => (
               <option key={region} value={region}>
                 {region}
@@ -174,7 +199,7 @@ export default function Aside() {
               <i className="nav-icon fas fa-school"></i>
               <p>Établissement</p>
             </a>
-            <select className="custom-select" onChange={e => setEtablissement(e.target.value)}>
+            <select className="custom-select" onChange={(e) => handleEtablissementChange(e.target.value)}>
             {data.etablissements && data.etablissements.map((etablissement) => (
               <option key={etablissement} value={etablissement}>
                 {etablissement}

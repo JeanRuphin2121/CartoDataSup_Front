@@ -4,10 +4,14 @@ import {  Line, Bar, Pie,    } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js';
 import { API_BASE_URL } from '../../../constants/constant';
 import { useAuth } from '../../../hooks/AuthProvider';
+import { useFilters } from '../../../hooks/FilterProvider';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const PublicVsPrivate = () => {
+
+  const { filters } = useFilters();
+
   const [data, setData] = useState([]);
   const [commune, setCommune] = useState('');
   const [academie, setAcademie] = useState('');
@@ -280,6 +284,11 @@ const PublicVsPrivate = () => {
           </div>
         </div>
       </div>
+    </div>
+
+    <div>
+      <h2>Filtres sélectionnés</h2>
+      <pre>{JSON.stringify(filters, null, 2)}</pre>
     </div>
 
     <section>
