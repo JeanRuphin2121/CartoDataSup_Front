@@ -7,7 +7,7 @@ export default function Setting() {
         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <a href="/public-vs-private" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Comparaison Public vs Privé
@@ -34,7 +34,7 @@ export default function Setting() {
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <a href="/ratio-capacity-candidates" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Ratio capacité d’accueil / Nbre Candidats

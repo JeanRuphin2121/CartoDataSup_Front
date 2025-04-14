@@ -10,6 +10,7 @@ import AuthProvider from "./hooks/AuthProvider";
 import PrivateRoute from "./router/route";
 import PublicHome from './pages/public/PublicHome';
 import PublicVsPrivate from './pages/user/insights/PublicVsPrivate';
+import RatioCapacityCandidates from './pages/user/insights/RatioCapacityCandidates';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<PublicVsPrivate />} />
               <Route path="/public-vs-private" element={<PublicVsPrivate />} />
+              <Route path="/ratio-capacity-candidates" element={<RatioCapacityCandidates />} />
             </Route>
             {/* Other routes */}
           </Routes>

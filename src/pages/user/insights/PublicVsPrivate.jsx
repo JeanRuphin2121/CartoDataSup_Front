@@ -13,8 +13,6 @@ const PublicVsPrivate = () => {
   const { filters } = useFilters();
 
   const [data, setData] = useState([]);
-  const [commune, setCommune] = useState('');
-  const [academie, setAcademie] = useState('');
 
   const { user, token, logOut } = useAuth();
 
@@ -134,7 +132,7 @@ const PublicVsPrivate = () => {
     labels: data.map(item => item.status),
     datasets: [
       {
-        data: data.map(item => item.total_femmes),
+        data: data.map(item => item.total_females),
         backgroundColor: ["#e83e8c", "#20c997", "#ffc107", "#6f42c1"],
       },
     ],
