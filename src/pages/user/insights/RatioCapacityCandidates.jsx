@@ -17,7 +17,7 @@ const RatioCapacityCandidates = () => {
   const { user, token, logOut } = useAuth();
 
   useEffect(() => {
-    setFilters({ ...filters, commune:"Rennes", });
+    // setFilters({ ...filters, commune:"Rennes", });
     fetchStats();
   }, [filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
