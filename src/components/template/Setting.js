@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Setting() {
   return (
     <aside className="control-sidebar control-sidebar-dark p-3">
@@ -6,6 +8,14 @@ export default function Setting() {
       <nav className="mt-2">
         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
+          <li className="nav-item">
+            <a href="/dashboard" className="nav-link">
+              <i className="nav-icon fas fa-chart-line"></i>
+              <p>
+              Formations
+              </p>
+            </a>
+          </li>
           <li className="nav-item">
             <a href="/public-vs-private" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
@@ -24,40 +34,40 @@ export default function Setting() {
             </a>
           </li>
 
-          <li className="nav-item">
-            <a href="#" className="nav-link">
+          <li className="nav-item">           
+            <Link href="formations/candidates" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
-              Répartition des candidats par type de formation
+              Répartition des candidats par formation
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="/ratio-capacity-candidates" className="nav-link">
+            <Link to="formations/ratio-capacity-candidates" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Ratio capacité d’accueil / Nbre Candidats
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="formations/filling-rate" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Taux de remplissage des formations
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="formations/admission-rate" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Taux d’admission par formation
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">

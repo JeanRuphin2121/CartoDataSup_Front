@@ -8,7 +8,7 @@ import { useFilters } from '../../../hooks/FilterProvider';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
-const RatioCapacityCandidates = () => {
+const FormationsCandidates = () => {
 
   const { filters, setFilters } = useFilters();
 
@@ -25,7 +25,7 @@ const RatioCapacityCandidates = () => {
   const fetchStats = async () => {
     try {
         console.log("token", token);
-        const response = await axios.get(API_BASE_URL + "ratio-capacity-candidates/", 
+        const response = await axios.get(API_BASE_URL + "formations/stats/?tri=total_candidats", 
             {
                 params: filters,
                 headers: {
@@ -48,18 +48,6 @@ const RatioCapacityCandidates = () => {
   };
 
   // Histogram data - Formations, Candidatures, etc.
-  const dataCapacityBar = {
-    labels: data.map(item => item.formation_name), // ou établissement
-    datasets: [
-      {
-        label: "Capacité d’accueil",
-        data: data.map(item => item.capacity),
-        backgroundColor: "rgba(54, 162, 235, 0.6)",
-      },
-    ],
-  };
-
-  // Histogram data - Formations, Candidatures, etc.
   const dataCandidatesBar = {
     labels: data.map(item => item.formation_name), // ou établissement
     datasets: [
@@ -67,18 +55,6 @@ const RatioCapacityCandidates = () => {
         label: "Candidatures totales",
         data: data.map(item => item.total_candidates),
         backgroundColor: "rgba(255, 99, 132, 0.6)",
-      },
-    ],
-  };
-
-  // Histogram data - Formations, Candidatures, etc.
-  const dataRatioBar = {
-    labels: data.map(item => item.formation_name), // ou établissement
-    datasets: [
-      {
-        label: "Ratio Capacité d’accueil / Candidatures",
-        data: data.map(item => item.ratio),
-        backgroundColor: "rgba(54, 162, 235, 0.6)",
       },
     ],
   };
@@ -90,42 +66,6 @@ const RatioCapacityCandidates = () => {
   //
 
   return (
-    // <div>
-    //   <h2>📊 Statistiques Public vs Privé</h2>
-
-    //   <div style={{ marginBottom: '1rem' }}>
-    //     <label>Commune : </label>
-    //     <select onChange={e => setCommune(e.target.value)}>
-    //       <option value="">Toutes</option>
-    //       <option value="Redon">Redon</option>
-    //       <option value="Rennes">Rennes</option>
-    //       {/* Ajoute plus de communes ici */}
-    //     </select>
-
-    //     <label style={{ marginLeft: '1rem' }}>Académie : </label>
-    //     <select onChange={e => setAcademie(e.target.value)}>
-    //       <option value="">Toutes</option>
-    //       <option value="Rennes">Rennes</option>
-    //       <option value="Nantes">Nantes</option>
-    //       {/* Ajoute plus d'académies ici */}
-    //     </select>
-    //   </div>
-
-    //   <Bar data={chartData} options={{
-    //     responsive: true,
-    //     plugins: {
-    //       legend: { position: 'top' },
-    //       title: { display: true, text: 'Comparaison des indicateurs par statut d’établissement' },
-    //     },
-    //   }} />
-    // </div>
-
-
-
-
-
-
-
 <div className="content-wrapper">
     {/* <!-- Content Header (Page header) --> */}
 
@@ -133,12 +73,12 @@ const RatioCapacityCandidates = () => {
       <div className="container-fluid">
         <div className="row mb-2">
           <div className="col-sm-6">
-            <h1 className="m-0">Ratio Capacité - Candidats</h1>
+            <h1 className="m-0">Répartition des candidatures par formation</h1>
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
               <li className="breadcrumb-item"><a href="/public-vs-private">Accueil</a></li>
-              <li className="breadcrumb-item active">Ratio capacité / Candidats</li>
+              <li className="breadcrumb-item active">Répartition des candidatures par formation</li>
             </ol>
           </div>
         </div>
@@ -149,47 +89,6 @@ const RatioCapacityCandidates = () => {
       <h2>Filtres sélectionnés</h2>
       <pre>{JSON.stringify(filters, null, 2)}</pre>
     </div> */}
-
-    <section>
-      <div className="container-fluid">
-        <div className="row">
-    
-          <div className="col-md-12">
-
-            <div className="card card-info">
-              <div className="card-header">
-                <h3 className="card-title">Capacité d'accueil</h3>
-
-                <div className="card-tools">
-                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
-                    <i className="fas fa-minus"></i>
-                  </button>
-                  <button type="button" className="btn btn-tool" data-card-widget="remove">
-                    <i className="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="chart">
-
-                <Bar data={dataCapacityBar} options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'top' },
-                            title: { display: true, text: 'Capacité d\'accueil' },
-                        }, }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>
-
-                </div>
-              </div>
-            </div>
-              
-          </div>
-
-          
-        </div>
-      </div>
-    </section>
 
     <section>
       <div className="container-fluid">
@@ -232,47 +131,6 @@ const RatioCapacityCandidates = () => {
       </div>
     </section>
 
-    <section>
-      <div className="container-fluid">
-        <div className="row">
-    
-          <div className="col-md-12">
-
-            <div className="card card-info">
-              <div className="card-header">
-                <h3 className="card-title">Ratio Capacité / candidats</h3>
-
-                <div className="card-tools">
-                  <button type="button" className="btn btn-tool" data-card-widget="collapse">
-                    <i className="fas fa-minus"></i>
-                  </button>
-                  <button type="button" className="btn btn-tool" data-card-widget="remove">
-                    <i className="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="chart">
-
-                <Bar data={dataRatioBar} options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'top' },
-                            title: { display: true, text: 'Ratio capacité d\accueil / Candidatures' },
-                        }, }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>
-
-                </div>
-              </div>
-            </div>
-              
-          </div>
-
-          
-        </div>
-      </div>
-    </section>
-
 
     <section>
       <div className="container-fluid">
@@ -282,7 +140,7 @@ const RatioCapacityCandidates = () => {
 
             <div className="card card-info">
               <div className="card-header">
-                <h3 className="card-title">Ratio Capacité / candidats</h3>
+                <h3 className="card-title">Répartition des candidatures par formation</h3>
 
                 <div className="card-tools">
                   <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -295,34 +153,22 @@ const RatioCapacityCandidates = () => {
               </div>
               <div className="card-body">
 
-              {data.length === 0 ? (
-                <div className="alert alert-info" role="alert">
-                  Aucune donnée disponible pour le moment.
-                </div>
-              ) : 
               
                 <table id="example1" className="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>Formation</th>
-                      <th>Capacité</th>
                       <th>Candidatures</th>
-                      <th>Ratio Capacité / Candidatures</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    {data.map((item, index) => {
-                      const ratio = item.total_candidates
-                        ? item.capacity / item.total_candidates
-                        : 0;
-                      let bgColor = ratio >= 1 ? "#d4edda" : ratio >= 0.5 ? "#fff3cd" : "#f8d7da";
+                    {data && data.map((item, index) => {
+                      
                       return (
-                        <tr key={index} style={{ backgroundColor: bgColor }}>
+                        <tr key={index}>
                           <td>{item.formation_name}</td>
-                          <td>{item.capacity}</td>
                           <td>{item.total_candidates}</td>
-                          <td>{ratio.toFixed(2)}</td>
                         </tr>
                       );
                     })}
@@ -331,14 +177,10 @@ const RatioCapacityCandidates = () => {
                     <tfoot>
                     <tr>
                       <th>Formation</th>
-                      <th>Capacité</th>
                       <th>Candidatures</th>
-                      <th>Ratio Capacité / Candidatures</th>
                     </tr>
                     </tfoot>
                 </table>
-              
-              }
 
 
               </div>
@@ -370,4 +212,4 @@ const RatioCapacityCandidates = () => {
   );
 };
 
-export default RatioCapacityCandidates;
+export default FormationsCandidates;

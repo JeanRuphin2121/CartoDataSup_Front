@@ -10,7 +10,14 @@ import AuthProvider from "./hooks/AuthProvider";
 import PrivateRoute from "./router/route";
 import PublicHome from './pages/public/PublicHome';
 import PublicVsPrivate from './pages/user/insights/PublicVsPrivate';
-import RatioCapacityCandidates from './pages/user/insights/RatioCapacityCandidates';
+import RatioCapacityCandidates from './pages/user/insights/FormationsRatioCapacityCandidates';
+import Formations from './pages/user/insights/Formations';
+import FormationsBySector from './pages/user/insights/Formations';
+import CandidatesByFormation from './pages/user/insights/FormationsCandidates';
+import FormationsCandidates from './pages/user/insights/FormationsCandidates';
+import FormationsFillingRate from './pages/user/insights/FormationsFillingRate';
+import FormationsAdmissionRate from './pages/user/insights/FormationsAdmissionRate';
+import FormationsRatioCapacityCandidates from './pages/user/insights/FormationsRatioCapacityCandidates';
 
 function App() {
   return (
@@ -20,9 +27,12 @@ function App() {
           <Route path="/" element={<PublicHome />} />
             <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/dashboard" element={<PublicVsPrivate />} />
+              <Route path="/dashboard" element={<Formations />} />
               <Route path="/public-vs-private" element={<PublicVsPrivate />} />
-              <Route path="/ratio-capacity-candidates" element={<RatioCapacityCandidates />} />
+              <Route path="formations/ratio-capacity-candidates" element={<FormationsRatioCapacityCandidates />} />
+              <Route path="/formations/candidates" element={<FormationsCandidates />} />
+              <Route path="/formations/filling-rate" element={<FormationsFillingRate />} />
+              <Route path="/formations/admission-rate" element={<FormationsAdmissionRate />} />
             </Route>
             {/* Other routes */}
           </Routes>
