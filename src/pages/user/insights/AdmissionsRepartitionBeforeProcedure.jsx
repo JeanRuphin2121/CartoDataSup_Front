@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
-const AdmissionRepartitionTypeBac = () => {
+const AdmissionsRepartitionBeforeProcedure = () => {
 
   const { filters } = useFilters();
 
@@ -47,33 +47,33 @@ const AdmissionRepartitionTypeBac = () => {
   };
 
   const chartData = {
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel', 'Autres candidats'],
+    labels: ['à l\'ouverture de la procédure principale', 'avant la fin de la procédure principale',],
     datasets: [
       {
-        data: [data.admitted_neo_bac_general, data.admitted_neo_bac_techno, data.admitted_neo_bac_pro, data.admitted_others_candidates],
-        backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
+        data: [data.after_procedure_start, data.after_procedure_end],
+        backgroundColor: ['#36A2EB', '#FFCE56',],
       },
     ],
   };
 
   const pieData = {
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel', 'Autres candidats'],
+    labels: ['à l\'ouverture de la procédure principale', 'avant la fin de la procédure principale',],
     datasets: [
       {
-        data: [data.admitted_neo_bac_general, data.admitted_neo_bac_techno, data.admitted_neo_bac_pro, data.admitted_others_candidates],
-        backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
+        data: [data.after_procedure_start, data.after_procedure_end,],
+        backgroundColor: ['#36A2EB', '#FFCE56',],
       },
     ],
   };
 
-  const total = data.admitted_neo_bac_general + data.admitted_neo_bac_techno + data.admitted_neo_bac_pro + data.admitted_others_candidates;
+  const total = data.total_admitted;
   const pieDataPercent = {
 
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel'],
+    labels: ['à l\'ouverture de la procédure principale', 'avant la fin de la procédure principale',],
     datasets: [
       {
-        data: [(data.admitted_neo_bac_general / total) * 100, (data.admitted_neo_bac_techno  / total) * 100, (data.admitted_neo_bac_pro  / total) * 100, (data.admitted_others_candidates / total) * 100],
-        backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
+        data: [(data.after_procedure_start / total) * 100, (data.after_procedure_end  / total) * 100,],
+        backgroundColor: ['#36A2EB', '#FFCE56',],
       },
     ],
   };
@@ -88,13 +88,13 @@ const AdmissionRepartitionTypeBac = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Répartition des admis par type de Bac</h1>
+                <h1 className="m-0">Analyse des délais d'admissions</h1>
                 <p className="m-0">Analyser l’égalité d’accès aux formations</p>
               </div>
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><Link to="/dashboard">Accueil</Link></li>
-                  <li className="breadcrumb-item active">Répartition des admis par type de Bac</li>
+                  <li className="breadcrumb-item active">Analyse des délais d'admission</li>
                 </ol>
               </div>
             </div>
@@ -114,7 +114,7 @@ const AdmissionRepartitionTypeBac = () => {
 
                 <div className="card card-info">
                   <div className="card-header">
-                    <h3 className="card-title">Répartition des admis par type de Bac</h3>
+                    <h3 className="card-title">ayant reçu leur proposition d’admission</h3>
 
                     <div className="card-tools">
                       <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -149,7 +149,7 @@ const AdmissionRepartitionTypeBac = () => {
 
                 <div className="card card-info">
                   <div className="card-header">
-                    <h3 className="card-title">Répartition des admis par type de Bac en %</h3>
+                    <h3 className="card-title">Ayant reçu leur proposition d’admission</h3>
 
                     <div className="card-tools">
                       <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -182,7 +182,7 @@ const AdmissionRepartitionTypeBac = () => {
 
                 <div className="card card-info">
                   <div className="card-header">
-                    <h3 className="card-title">Répartition des admis par type de Bac (en %)</h3>
+                    <h3 className="card-title">ayant reçu leur proposition d’admission (en %)</h3>
 
                     <div className="card-tools">
                       <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -232,4 +232,4 @@ const AdmissionRepartitionTypeBac = () => {
   );
 };
 
-export default AdmissionRepartitionTypeBac;
+export default AdmissionsRepartitionBeforeProcedure;

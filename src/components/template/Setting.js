@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Setting() {
   return (
-    <aside className="control-sidebar control-sidebar-dark p-3">
+    <aside className="control-sidebar control-sidebar-dark p-3" style={{overflow: "scroll", maxHeight: "600px"}}>
 
 
       <nav className="mt-2">
@@ -72,48 +72,47 @@ export default function Setting() {
           </li>
 
           <li className="nav-item">
-            <Link to="admissions/repatition/type-bac" className="nav-link">
+            <Link to="admissions/repartition/type-bac" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
                 Répartition des admis par type de bac
               </p>
             </Link>
           </li>
-
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="admissions/repartition/mention" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
-              Répartition des mentions des admis
+                Répartition des admis par mention
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="admissions/repartition/boursiers-vs-nonBoursiers" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Impact du statut boursier sur l’admission
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="admissions/repartition/females" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Proportion filles-garcons dans les admissions
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="admissions/repartition/delais-admission" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Analyse des délais d’admission
               </p>
-            </a>
+            </Link>
           </li>
 
           

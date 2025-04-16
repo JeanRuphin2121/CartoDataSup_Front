@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
-const AdmissionRepartitionTypeBac = () => {
+const AdmissionRepartitionMention = () => {
 
   const { filters } = useFilters();
 
@@ -47,32 +47,32 @@ const AdmissionRepartitionTypeBac = () => {
   };
 
   const chartData = {
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel', 'Autres candidats'],
+    labels: ['Très-bien', 'Bien', 'Assez-bien', 'Sans mention'],
     datasets: [
       {
-        data: [data.admitted_neo_bac_general, data.admitted_neo_bac_techno, data.admitted_neo_bac_pro, data.admitted_others_candidates],
+        data: [data.mention_tb, data.mention_b, data.mention_ab, data.mention_none],
         backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
       },
     ],
   };
 
   const pieData = {
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel', 'Autres candidats'],
+    labels: ['Très-bien', 'Bien', 'Assez-bien', 'Sans mention'],
     datasets: [
       {
-        data: [data.admitted_neo_bac_general, data.admitted_neo_bac_techno, data.admitted_neo_bac_pro, data.admitted_others_candidates],
+        data: [data.mention_tb, data.mention_b, data.mention_ab, data.mention_none],
         backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
       },
     ],
   };
 
-  const total = data.admitted_neo_bac_general + data.admitted_neo_bac_techno + data.admitted_neo_bac_pro + data.admitted_others_candidates;
+  const total = data.mention_tb + data.mention_b + data.mention_ab + data.mention_none;
   const pieDataPercent = {
 
-    labels: ['Bac Général', 'Bac Technologique', 'Bac Professionnel'],
+    labels: ['Très-bien', 'Bien', 'Assez-bien'],
     datasets: [
       {
-        data: [(data.admitted_neo_bac_general / total) * 100, (data.admitted_neo_bac_techno  / total) * 100, (data.admitted_neo_bac_pro  / total) * 100, (data.admitted_others_candidates / total) * 100],
+        data: [(data.mention_tb / total) * 100, (data.mention_b  / total) * 100, (data.mention_ab  / total) * 100, (data.mention_none / total) * 100],
         backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#6f42c1'],
       },
     ],
@@ -232,4 +232,4 @@ const AdmissionRepartitionTypeBac = () => {
   );
 };
 
-export default AdmissionRepartitionTypeBac;
+export default AdmissionRepartitionMention;
