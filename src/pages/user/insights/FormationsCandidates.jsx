@@ -74,6 +74,8 @@ const FormationsCandidates = () => {
         <div className="row mb-2">
           <div className="col-sm-6">
             <h1 className="m-0">Répartition des candidatures par formation</h1>
+            <p className="m-0">Analyser la sélectivité des formations suivant les candidatures</p>
+
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">

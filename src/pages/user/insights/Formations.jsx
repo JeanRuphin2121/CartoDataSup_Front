@@ -5,7 +5,7 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Toolti
 import { API_BASE_URL } from '../../../constants/constant';
 import { useAuth } from '../../../hooks/AuthProvider';
 import { useFilters } from '../../../hooks/FilterProvider';
-
+import { Link } from "react-router-dom";
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const FormationsBySector = () => {
@@ -68,10 +68,11 @@ const FormationsBySector = () => {
         <div className="row mb-2">
           <div className="col-sm-6">
             <h1 className="m-0">Formations</h1>
+            <p className="m-0">Analyser la sélectivité des formations suivant leur capacité d'accueil</p>
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
-              <li className="breadcrumb-item"><a href="/public-vs-private">Accueil</a></li>
+              <li className="breadcrumb-item"><Link to="/dashboard">Accueil</Link></li>
               <li className="breadcrumb-item active">Formations</li>
             </ol>
           </div>

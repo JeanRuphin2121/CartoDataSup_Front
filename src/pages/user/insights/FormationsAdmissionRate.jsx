@@ -178,7 +178,7 @@ const FormationsAdmissionRate = () => {
                           <td>{item.formation_name}</td>
                           <td>{item.total_candidates}</td>
                           <td>{item.admitted_total}</td>
-                          <td>{item.filling_rate}</td>
+                          <td>{item.admission_rate}</td>
                         </tr>
                       );
                     })}

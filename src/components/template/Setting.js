@@ -16,6 +16,7 @@ export default function Setting() {
               </p>
             </a>
           </li>
+
           <li className="nav-item">
             <a href="/public-vs-private" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
@@ -35,7 +36,7 @@ export default function Setting() {
           </li>
 
           <li className="nav-item">           
-            <Link href="formations/candidates" className="nav-link">
+            <Link to="formations/candidates" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Répartition des candidats par formation
@@ -71,12 +72,12 @@ export default function Setting() {
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="admissions/repatition/type-bac" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
-              Répartition des admis par type de bac
+                Répartition des admis par type de bac
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">

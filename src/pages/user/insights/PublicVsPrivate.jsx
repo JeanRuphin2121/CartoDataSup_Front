@@ -5,6 +5,7 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Toolti
 import { API_BASE_URL } from '../../../constants/constant';
 import { useAuth } from '../../../hooks/AuthProvider';
 import { useFilters } from '../../../hooks/FilterProvider';
+import { Link } from 'react-router-dom';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
@@ -276,7 +277,7 @@ const PublicVsPrivate = () => {
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
-              <li className="breadcrumb-item"><a href="#">Home</a></li>
+              <li className="breadcrumb-item"><Link to="/dashboard">Accueil</Link></li>
               <li className="breadcrumb-item active">Comparaison public Vs privée</li>
             </ol>
           </div>

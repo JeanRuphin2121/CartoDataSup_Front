@@ -18,6 +18,7 @@ import FormationsCandidates from './pages/user/insights/FormationsCandidates';
 import FormationsFillingRate from './pages/user/insights/FormationsFillingRate';
 import FormationsAdmissionRate from './pages/user/insights/FormationsAdmissionRate';
 import FormationsRatioCapacityCandidates from './pages/user/insights/FormationsRatioCapacityCandidates';
+import AdmissionRepartitionTypeBac from './pages/user/insights/AdmissionsRepartitionTypeBac';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/formations/candidates" element={<FormationsCandidates />} />
               <Route path="/formations/filling-rate" element={<FormationsFillingRate />} />
               <Route path="/formations/admission-rate" element={<FormationsAdmissionRate />} />
+              <Route path="/admissions/repatition/type-bac" element={<AdmissionRepartitionTypeBac />} />
             </Route>
             {/* Other routes */}
           </Routes>
