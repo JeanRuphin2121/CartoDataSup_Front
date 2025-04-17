@@ -10,3 +10,18 @@
 .insight-title-h3 {
   width: 90%;
 }
+
+.bar-chart-card-body{
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.bar-chart{
+  width: 2000px;
+}
+
+.table-card-body{
+  height: 800px;
+  overflow: scroll;
+}
+

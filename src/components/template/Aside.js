@@ -10,6 +10,10 @@ export default function Aside() {
   const [data, setData] = useState([]);
   const { user, token, logOut } = useAuth();
 
+  const [input, setInput] = useState({
+    search_formation_name : "",
+  });
+
   useEffect(() => {
       fetchOptions();
   },[filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
@@ -70,6 +74,22 @@ export default function Aside() {
   const handleFormationChange = (value) => {
     setFilters({ ...filters, formation: value === "" ? null : value, });
   };
+  const handleSearchFormationNameChange = (value) => {
+    console.log(input.search_formation_name)
+    setFilters({ ...filters, formation: input.search_formation_name === "" ? null : input.search_formation_name, });
+    // setInput((prev) => ({
+    //     ...prev,
+    //     search_formation_name : "",
+    // }));
+  };
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+        ...prev,
+        [name]: value,
+    }));
+};
 
   const handleResetFilters = () => {
     // Réinitialiser tous les filtres
@@ -111,16 +131,16 @@ export default function Aside() {
       </div>
 
       {/* <!-- SidebarSearch Form --> */}
-      {/* <div className="form-inline">
-        <div className="input-group" data-widget="sidebar-search">
-          <input className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"/>
+      <div className="form-inline">
+        <div className="input-group" data-widget="">
+          <input name="search_formation_name" onChange={handleInput} className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"/>
           <div className="input-group-append">
-            <button className="btn btn-sidebar">
+            <button onClick={handleSearchFormationNameChange} className="btn btn-sidebar">
               <i className="fas fa-search fa-fw"></i>
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* <!-- Sidebar Menu --> */}
       <nav className="mt-2">
@@ -128,14 +148,14 @@ export default function Aside() {
           {/* <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library --> */}
           
-          <li className="nav-item mb-1 active">
+          {/* <li className="nav-item mb-1 active">
             <a className="nav-link">
               <i className="nav-icon fas fa-filter"></i>
               <p>
                 Filtres
               </p>
             </a>
-          </li>
+          </li> */}
 
           {/* Filtre Année */}
           <li className="nav-item mb-2">

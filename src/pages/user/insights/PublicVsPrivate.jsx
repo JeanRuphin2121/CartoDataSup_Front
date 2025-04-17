@@ -88,22 +88,22 @@ const PublicVsPrivate = () => {
         {
             label: 'Candidats Bac Genéral',
             data: data.map(item => item.total_neo_bac_general),
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            backgroundColor: 'rgba(8, 98, 131, 0.5)',
         },
         {
             label: 'Candidats Bac Technologique',
             data: data.map(item => item.neo_bac_techno),
-            backgroundColor: 'rgba(255, 206, 86, 0.6)',
+            backgroundColor: 'rgba(25, 206, 86, 0.6)',
         },
         {
             label: 'Candidats Bac Pro',
             data: data.map(item => item.neo_bac_pro),
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            backgroundColor: 'rgba(6, 71, 71, 0.6)',
         },
         {
             label: 'Admis boursiers',
             data: data.map(item => item.admitted_boursiers),
-            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+            backgroundColor: 'rgba(74, 43, 134, 0.6)',
         },
     ],
   };
@@ -285,10 +285,10 @@ const PublicVsPrivate = () => {
       </div>
     </div>
 
-    <div>
+    {/* <div>
       <h2>Filtres sélectionnés</h2>
       <pre>{JSON.stringify(filters, null, 2)}</pre>
-    </div>
+    </div> */}
 
     <section>
       <div className="container-fluid">
@@ -299,6 +299,7 @@ const PublicVsPrivate = () => {
             <div className="card card-info">
               <div className="card-header">
                 <h3 className="card-title">Suivant tous les paramètres ( formations, candidatures féminines etc)</h3>
+                <p className="card-title">Analyser la sélectivité des différents types d'établissements</p>
 
                 <div className="card-tools">
                   <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -309,8 +310,8 @@ const PublicVsPrivate = () => {
                   </button>
                 </div>
               </div>
-              <div className="card-body">
-                <div className="chart">
+              <div className="card-body bar-chart-card-body">
+                <div style={{width : "1200px"}} className="chart ">
 
                 <Bar data={chartData} options={{
                         responsive: true,

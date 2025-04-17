@@ -264,8 +264,8 @@ const FormationsRatioCapacityCandidates = () => {
                   </button>
                 </div>
               </div>
-              <div className="card-body">
-                <div className="chart">
+              <div className="card-body bar-chart-card-body">
+                <div className="chart bar-chart">
 
                 <Bar data={dataRatioBar} options={{
                         responsive: true,
@@ -305,7 +305,7 @@ const FormationsRatioCapacityCandidates = () => {
                   </button>
                 </div>
               </div>
-              <div className="card-body">
+              <div className="card-body table-card-body">
 
               
                 <table id="example1" className="table table-bordered table-striped">

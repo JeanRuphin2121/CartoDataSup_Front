@@ -104,8 +104,8 @@ const FormationsBySector = () => {
                   </button>
                 </div>
               </div>
-              <div className="card-body">
-                <div className="chart">
+              <div className="card-body bar-chart-card-body">
+                <div className="chart bar-chart">
 
                 <Bar data={dataCapacityBar} options={{
                         responsive: true,
@@ -145,7 +145,7 @@ const FormationsBySector = () => {
                   </button>
                 </div>
               </div>
-              <div className="card-body">
+              <div className="card-body table-card-body">
 
               
                 <table id="example2" className="table table-bordered table-striped">
