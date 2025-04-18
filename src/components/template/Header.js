@@ -2,7 +2,6 @@
 import React from 'react';
 import { useAuth } from '../../hooks/AuthProvider';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { API_BASE_URL } from '../../constants/constant';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
