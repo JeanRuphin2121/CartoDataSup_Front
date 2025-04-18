@@ -299,7 +299,6 @@ const PublicVsPrivate = () => {
             <div className="card card-info">
               <div className="card-header">
                 <h3 className="card-title">Suivant tous les paramètres ( formations, candidatures féminines etc)</h3>
-                <p className="card-title">Analyser la sélectivité des différents types d'établissements</p>
 
                 <div className="card-tools">
                   <button type="button" className="btn btn-tool" data-card-widget="collapse">

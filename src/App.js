@@ -23,6 +23,7 @@ import AdmissionRepartitionMention from './pages/user/insights/AdmissionsReparti
 import AdmissionsRepartitionBoursierVsNonBoursier from './pages/user/insights/AdmissionsRepartitionBoursierVsNonBoursier';
 import AdmissionsRepartitionFemales from './pages/user/insights/AdmissionsRepartitionFemales';
 import AdmissionsRepartitionBeforeProcedure from './pages/user/insights/AdmissionsRepartitionBeforeProcedure';
+import FormationsRepartionGeo from './pages/user/insights/FormationsRepartionGeo';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/formations/candidates" element={<FormationsCandidates />} />
               <Route path="/formations/filling-rate" element={<FormationsFillingRate />} />
               <Route path="/formations/admission-rate" element={<FormationsAdmissionRate />} />
+              <Route path="/formations/repartions-geo" element={<FormationsRepartionGeo />} />
               <Route path="/admissions/repartition/type-bac" element={<AdmissionRepartitionTypeBac />} />
               <Route path="/admissions/repartition/mention" element={<AdmissionRepartitionMention />} />
               <Route path="/admissions/repartition/boursiers-vs-nonBoursiers" element={<AdmissionsRepartitionBoursierVsNonBoursier />} />

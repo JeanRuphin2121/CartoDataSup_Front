@@ -6,7 +6,10 @@ import { API_BASE_URL } from '../../../constants/constant';
 import { useAuth } from '../../../hooks/AuthProvider';
 import { useFilters } from '../../../hooks/FilterProvider';
 import { Link } from "react-router-dom";
-ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
+
+import zoomPlugin from "chartjs-plugin-zoom";
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, zoomPlugin);
 
 const FormationsBySector = () => {
 
@@ -107,13 +110,17 @@ const FormationsBySector = () => {
               <div className="card-body bar-chart-card-body">
                 <div className="chart bar-chart">
 
-                <Bar data={dataCapacityBar} options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'top' },
-                            title: { display: true, text: 'Capacité d\'accueil' },
-                        }, }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>
+                <Bar data={dataCapacityBar} 
+                
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      plugins: {
+                          legend: { position: 'top' },
+                          title: { display: true, text: 'Capacité d\'accueil' },
+                          
+                      }, 
+                    }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>
 
                 </div>
               </div>

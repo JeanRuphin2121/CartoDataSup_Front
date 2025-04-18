@@ -27,12 +27,12 @@ export default function Setting() {
           </li>
           
           <li className="nav-item">
-            <a href="#" className="nav-link">
+            <Link to="formations/repartions-geo" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Répartition géographique du nombre de formations
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">           
