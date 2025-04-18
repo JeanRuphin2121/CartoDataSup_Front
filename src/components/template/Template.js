@@ -2,7 +2,7 @@ import Header from './Header';
 import Aside from './Aside';
 import Footer from './Footer';
 import Setting from './Setting';
-import Dashboard from './Dashboard';
+import PublicVsPrivate from '../../pages/user/insights/PublicVsPrivate';
 
 export default function Template() {
   return (
@@ -15,7 +15,8 @@ export default function Template() {
 
         <Header />
         <Aside />
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <PublicVsPrivate />
         <Footer />
         <Setting />
       </div>
