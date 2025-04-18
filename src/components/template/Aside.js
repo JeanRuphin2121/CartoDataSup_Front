@@ -126,7 +126,7 @@ export default function Aside() {
           
         </div>
         <div className="info">
-          <a href="#" className="d-block">Alexander Pierce</a>
+          <a href="#" className="d-block">{user ? user.username : "Invité"}</a>
         </div>
       </div>
 

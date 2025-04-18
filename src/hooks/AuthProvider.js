@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../constants/constant";
 
@@ -12,6 +12,12 @@ const AuthProvider = ({ children }) => {
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken") || "");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      console.log("Nouvel utilisateur connecté :", user);
+    }
+  }, [user]);
+
   const loginAction = async (data) => {
     try {
       const response = await fetch( API_BASE_URL + "login/", {
@@ -22,11 +28,15 @@ const AuthProvider = ({ children }) => {
         body: JSON.stringify(data),
       });
       const res = await response.json();
-      console.log(res);
-      console.log(res.data);
+      
       if (res.data) {
-        console.log(res);
-        setUser(res.data.user);
+        console.log(res.data.user);
+
+        
+
+        setUser(  res.data.user);
+        console.log("dddd : user : ")
+        console.log(user)
         setToken(res.data.token);
         setRefreshToken(res.data.refreshToken);
         localStorage.setItem("token", res.data.token);
