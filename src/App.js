@@ -30,7 +30,7 @@ function App() {
     <>      
         <AuthProvider>
           <Routes>
-          <Route path="/" element={<PublicHome />} />
+            <Route path="/" element={<PublicHome />} />
             <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Formations />} />
