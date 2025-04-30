@@ -13,6 +13,7 @@ export const FilterProvider = ({ children }) => {
     etablissement: null,
     formation_selectivity: null,
     formation: null,
+    repartition_geo_sector: null,
   });
 
   return (

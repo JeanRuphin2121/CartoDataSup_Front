@@ -11,7 +11,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend)
 
 const FormationsRepartionGeo = () => {
 
-  const { filters } = useFilters();
+  const { filters, setFilters } = useFilters();
 
   const [data, setData] = useState([]);
   
@@ -20,7 +20,7 @@ const FormationsRepartionGeo = () => {
 
   useEffect(() => {
     fetchStats();
-  }, [sector, filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
+  }, [filters.repartition_geo_sector, filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
   // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchStats = async () => {
@@ -28,7 +28,7 @@ const FormationsRepartionGeo = () => {
         console.log("token", token);
         const response = await axios.get(API_BASE_URL + "repartition-geographique-formations", {
 
-                params: { group_by: sector }, // ou 'academy', 'department_name'
+                params: filters, // ou 'academy', 'department_name'
                 headers: {
                 Authorization: `Bearer ${token}`
                 }
@@ -47,9 +47,11 @@ const FormationsRepartionGeo = () => {
     }
   };
 
+  
   const handleSectorChange = (value) => {
-    setSector(value);
-  };
+    setFilters({ ...filters, 
+      repartition_geo_sector: value === "" ? null : value,});
+    };
 
   // Histogram data - Formations, Candidatures, etc.
   const chartData = {
