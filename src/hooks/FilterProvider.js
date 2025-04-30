@@ -14,6 +14,7 @@ export const FilterProvider = ({ children }) => {
     formation_selectivity: null,
     formation: null,
     repartition_geo_sector: null,
+    formation_searched: null,
   });
 
   return (

@@ -16,7 +16,7 @@ export default function Aside() {
 
   useEffect(() => {
       fetchOptions();
-  },[filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
+  },[ filters.formation_searched, filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
     // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchOptions = async () => {
@@ -74,9 +74,9 @@ export default function Aside() {
   const handleFormationChange = (value) => {
     setFilters({ ...filters, formation: value === "" ? null : value, });
   };
-  const handleSearchFormationNameChange = (value) => {
+  const handleSearchFormationNameChange = () => {
     console.log(input.search_formation_name)
-    setFilters({ ...filters, formation: input.search_formation_name === "" ? null : input.search_formation_name, });
+    setFilters({ ...filters, formation_searched: input.search_formation_name === "" ? null : input.search_formation_name, });
     // setInput((prev) => ({
     //     ...prev,
     //     search_formation_name : "",

@@ -19,7 +19,9 @@ const FormationsRatioCapacityCandidates = () => {
   useEffect(() => {
     // setFilters({ ...filters, commune:"Rennes", });
     fetchStats();
-  }, [filters.annee, 
+  }, [
+    filters.formation_searched,
+    filters.annee, 
       filters.academy, 
       filters.departement, 
       filters.commune, 

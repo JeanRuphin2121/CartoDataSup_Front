@@ -19,7 +19,7 @@ const FormationsCandidates = () => {
   useEffect(() => {
     // setFilters({ ...filters, commune:"Rennes", });
     fetchStats();
-  }, [filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
+  }, [filters.formation_searched, filters.annee, filters.academy, filters.departement, filters.commune, filters.region, filters.status_institution, filters.etablissement,  filters.formation_selectivity, filters.formation]);
 
   // Fonction pour récupérer les données statistiques et préparation pour les graphiques
   const fetchStats = async () => {
