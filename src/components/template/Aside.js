@@ -77,10 +77,15 @@ export default function Aside() {
   const handleSearchFormationNameChange = () => {
     console.log(input.search_formation_name)
     setFilters({ ...filters, formation_searched: input.search_formation_name === "" ? null : input.search_formation_name, });
-    // setInput((prev) => ({
-    //     ...prev,
-    //     search_formation_name : "",
-    // }));
+    
+  };
+  const handleClearSearchFormationName = () => {
+    
+    setInput((prev) => ({
+        search_formation_name : "",
+    }));
+    setFilters({ ...filters, formation_searched:  null });
+    
   };
 
   const handleInput = (e) => {
@@ -133,17 +138,22 @@ export default function Aside() {
       {/* <!-- SidebarSearch Form --> */}
       <div className="form-inline">
         <div className="input-group" data-widget="">
-          <input name="search_formation_name" onChange={handleInput} className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"/>
+          <input value={input.search_formation_name} name="search_formation_name" onChange={handleInput} className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"/>
           <div className="input-group-append">
             <button onClick={handleSearchFormationNameChange} className="btn btn-sidebar">
               <i className="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+          <div className="input-group-append">
+            <button onClick={handleClearSearchFormationName} className="btn btn-sidebar">
+              <i className="fas fa-times fa-fw"></i>
             </button>
           </div>
         </div>
       </div>
 
       {/* <!-- Sidebar Menu --> */}
-      <nav className="mt-2">
+      <nav className="mt-3" style={{overflow: "scroll", maxHeight: "1000px"}}>
         <ul className="nav nav-pills nav-sidebar flex-column aside-menu-ul" data-widget="treeview" role="menu" data-accordion="false">
           {/* <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library --> */}
