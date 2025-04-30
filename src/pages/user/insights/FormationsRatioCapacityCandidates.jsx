@@ -25,7 +25,7 @@ const FormationsRatioCapacityCandidates = () => {
   const fetchStats = async () => {
     try {
         console.log("token", token);
-        const response = await axios.get(API_BASE_URL + "formations/stats/", 
+        const response = await axios.get(API_BASE_URL + "formations/stats/?order=asc", 
             {
                 params: filters,
                 headers: {
@@ -323,7 +323,10 @@ const FormationsRatioCapacityCandidates = () => {
                       const ratio = item.total_candidates
                         ? item.capacity / item.total_candidates
                         : 0;
-                      let bgColor = ratio >= 1 ? "#d4edda" : ratio >= 0.5 ? "#fff3cd" : "#f8d7da";
+                      let bgColor = ratio >= 1 ? 
+                                        "#f8d7da" : 
+                                          ratio >= 0.5 ? "#fff3cd" : 
+                                                                ratio == 0 ? "#f8d7da" : "#d4edda";
                       return (
                         <tr key={index} style={{ backgroundColor: bgColor }}>
                           <td>{item.formation_name}</td>
