@@ -163,18 +163,18 @@ const FormationsAdmissionRate = () => {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                          datalabels: showLabels
-                          ? {
-                              anchor: 'end',
-                              align: 'top',
-                              formatter: (value) => value,
-                              color: '#000',
-                              font: {
-                                weight: 'bold',
-                                size: 12,
-                              },
-                            }
-                          : false, // désactive les labels
+                          // datalabels: showLabels
+                          // ? {
+                          //     anchor: 'end',
+                          //     align: 'top',
+                          //     formatter: (value) => value,
+                          //     color: '#000',
+                          //     font: {
+                          //       weight: 'bold',
+                          //       size: 12,
+                          //     },
+                          //   }
+                          // : false, // désactive les labels
                             legend: { position: 'top' },
                             title: { display: true, text: 'Admissions totales' },
                         }, }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>
@@ -216,6 +216,9 @@ const FormationsAdmissionRate = () => {
                 <table id="example1" className="table table-bordered table-striped">
                     <thead>
                     <tr>
+                      <th>Académie</th>
+                      <th>Département</th>
+                      <th>Commune</th>
                       <th>Formation</th>
                       <th>Candidatures</th>
                       <th>Admission totale</th>
@@ -228,6 +231,9 @@ const FormationsAdmissionRate = () => {
                       
                       return (
                         <tr key={index}>
+                          <td>{item.academy}</td>
+                          <td>{item.departement}</td>
+                          <td>{item.commune}</td>
                           <td>{item.formation_name}</td>
                           <td>{item.total_candidates}</td>
                           <td>{item.admitted_total}</td>

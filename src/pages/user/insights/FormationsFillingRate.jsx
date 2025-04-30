@@ -163,6 +163,9 @@ const FormationsFillingRate = () => {
                 <table id="example1" className="table table-bordered table-striped">
                     <thead>
                     <tr>
+                      <th>Académie</th>
+                      <th>Département</th>
+                      <th>Commune</th>
                       <th>Formation</th>
                       <th>Capacité</th>
                       <th>Admission totale</th>
@@ -175,6 +178,9 @@ const FormationsFillingRate = () => {
                       
                       return (
                         <tr key={index}>
+                          <td>{item.academy}</td>
+                          <td>{item.departement}</td>
+                          <td>{item.commune}</td>
                           <td>{item.formation_name}</td>
                           <td>{item.capacity}</td>
                           <td>{item.admitted_total}</td>

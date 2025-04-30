@@ -322,6 +322,9 @@ const FormationsRatioCapacityCandidates = () => {
                 <table id="example1" className="table table-bordered table-striped">
                     <thead>
                     <tr>
+                    <th>Académie</th>
+                      <th>Département</th>
+                      <th>Commune</th>
                       <th>Formation</th>
                       <th>Capacité</th>
                       <th>Candidatures</th>
@@ -340,6 +343,9 @@ const FormationsRatioCapacityCandidates = () => {
                                                                 ratio == 0 ? "#f8d7da" : "#d4edda";
                       return (
                         <tr key={index} style={{ backgroundColor: bgColor }}>
+                          <td>{item.academy}</td>
+                          <td>{item.departement}</td>
+                          <td>{item.commune}</td>
                           <td>{item.formation_name}</td>
                           <td>{item.capacity}</td>
                           <td>{item.total_candidates}</td>

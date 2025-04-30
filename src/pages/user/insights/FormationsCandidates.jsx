@@ -159,6 +159,9 @@ const FormationsCandidates = () => {
                 <table id="example1" className="table table-bordered table-striped">
                     <thead>
                     <tr>
+                      <th>Académie</th>
+                      <th>Département</th>
+                      <th>Commune</th>
                       <th>Formation</th>
                       <th>Candidatures</th>
                     </tr>
@@ -169,6 +172,9 @@ const FormationsCandidates = () => {
                       
                       return (
                         <tr key={index}>
+                          <td>{item.academy}</td>
+                          <td>{item.departement}</td>
+                          <td>{item.commune}</td>
                           <td>{item.formation_name}</td>
                           <td>{item.total_candidates}</td>
                         </tr>

@@ -160,6 +160,9 @@ const FormationsBySector = () => {
                 <table id="example2" className="table table-bordered table-striped">
                     <thead>
                     <tr>
+                      <th>Académie</th>
+                      <th>Département</th>
+                      <th>Commune</th>
                       <th>Formation</th>
                       <th>Capacité</th>
                     </tr>
@@ -176,6 +179,9 @@ const FormationsBySector = () => {
                       return (
                         // <tr key={index} style={{ backgroundColor: bgColor }}>
                         <tr key={index}>
+                          <td>{item.institution.academy}</td>
+                          <td>{item.institution.department_name}</td>
+                          <td>{item.institution.commune}</td>
                           <td>{item.detailed_category}</td>
                           <td>{item.capacity}</td>
                         </tr>
@@ -183,12 +189,7 @@ const FormationsBySector = () => {
                     })}
                     
                     </tbody>
-                    <tfoot>
-                    <tr>
-                      <th>Formation</th>
-                      <th>Capacité</th>
-                    </tr>
-                    </tfoot>
+                    
                 </table>
 
 
