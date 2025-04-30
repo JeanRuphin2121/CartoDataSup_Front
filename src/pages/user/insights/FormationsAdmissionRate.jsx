@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import {  Line, Bar, Pie,    } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js';
@@ -15,6 +15,9 @@ const FormationsAdmissionRate = () => {
   const [data, setData] = useState([]);
 
   const { user, token, logOut } = useAuth();
+
+  const [showLabels, setShowLabels] = useState(false);
+  const chartRef = useRef()
 
   useEffect(() => {
     // setFilters({ ...filters, commune:"Rennes", });
@@ -64,11 +67,29 @@ const FormationsAdmissionRate = () => {
     ],
   };
   
-  
-  
-  
 
-  //
+  // const handleExport = () => {
+  //   setShowLabels(true);
+
+  //   setTimeout(() => {
+  //     const chart = chartRef.current;
+
+  //     if (!chart || !chart.canvas) {
+  //       console.error("Chart ref or canvas is null");
+  //       setShowLabels(false);
+  //       return;
+  //     }
+
+  //     const url = chart.canvas.toDataURL("image/png", 1);
+  //     const link = document.createElement("a");
+  //     link.download = "graphique.png";
+  //     link.href = url;
+  //     link.click();
+
+  //     setShowLabels(false);
+  //   }, 300);
+  // };
+
 
   return (
 <div className="content-wrapper">
@@ -91,6 +112,17 @@ const FormationsAdmissionRate = () => {
       </div>
     </div>
 
+    {/* <div className="content-header">
+      <div className="container-fluid">
+        <div className="row mb-2">
+          <button onClick={() => setShowLabels(prev => !prev)}>
+            {showLabels ? "Masquer les valeurs" : "Afficher les valeurs"}
+          </button>
+
+        </div>
+      </div>
+    </div> */}
+
     {/* <div>
       <h2>Filtres sélectionnés</h2>
       <pre>{JSON.stringify(filters, null, 2)}</pre>
@@ -107,6 +139,9 @@ const FormationsAdmissionRate = () => {
                 <h3 className="card-title">Total des admissions</h3>
 
                 <div className="card-tools">
+                  
+                  {/* <button onClick={handleExport}>Exporter</button> */}
+
                   <button type="button" className="btn btn-tool" data-card-widget="collapse">
                     <i className="fas fa-minus"></i>
                   </button>
@@ -118,10 +153,28 @@ const FormationsAdmissionRate = () => {
               <div  className="card-body bar-chart-card-body">
                 <div className="chart bar-chart">
 
-                <Bar data={dataAdmissions} options={{
+                <Bar  
+                        ref={(el) => {
+                          if (el) chartRef.current = el.chartInstance || el;
+                        }}
+
+                        data={dataAdmissions} 
+                        options={{
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
+                          datalabels: showLabels
+                          ? {
+                              anchor: 'end',
+                              align: 'top',
+                              formatter: (value) => value,
+                              color: '#000',
+                              font: {
+                                weight: 'bold',
+                                size: 12,
+                              },
+                            }
+                          : false, // désactive les labels
                             legend: { position: 'top' },
                             title: { display: true, text: 'Admissions totales' },
                         }, }}  style={{minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%"}}/>

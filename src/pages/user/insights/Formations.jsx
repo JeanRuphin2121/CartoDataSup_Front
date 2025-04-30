@@ -8,6 +8,7 @@ import { useFilters } from '../../../hooks/FilterProvider';
 import { Link } from "react-router-dom";
 
 import zoomPlugin from "chartjs-plugin-zoom";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, zoomPlugin);
 
@@ -115,6 +116,7 @@ const FormationsBySector = () => {
                     options={{
                       responsive: true,
                       maintainAspectRatio: false,
+                      
                       plugins: {
                           legend: { position: 'top' },
                           title: { display: true, text: 'Capacité d\'accueil' },
