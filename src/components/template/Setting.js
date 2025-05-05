@@ -9,21 +9,21 @@ export default function Setting() {
         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
           <li className="nav-item">
-            <a href="/dashboard" className="nav-link">
+            <Link to="/dashboard" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Formations
               </p>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="/public-vs-private" className="nav-link">
+            <Link to="/public-vs-private" className="nav-link">
               <i className="nav-icon fas fa-chart-line"></i>
               <p>
               Comparaison Public vs Privé
               </p>
-            </a>
+            </Link>
           </li>
           
           <li className="nav-item">

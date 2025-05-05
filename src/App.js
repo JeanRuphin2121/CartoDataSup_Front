@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Template from './components/template/Template';
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Dashboard from "./components/template/Dashboard";
@@ -28,6 +28,9 @@ import FormationsRepartionGeo from './pages/user/insights/FormationsRepartionGeo
 function App() {
   return (
     <>      
+
+      <BrowserRouter basename='/stage'>
+
         <AuthProvider>
           <Routes>
             <Route path="/" element={<PublicHome />} />
@@ -49,6 +52,8 @@ function App() {
             {/* Other routes */}
           </Routes>
         </AuthProvider>
+      
+      </BrowserRouter>
 
 
       {/* <div className="wrapper"> */}
