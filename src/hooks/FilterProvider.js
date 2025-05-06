@@ -17,8 +17,24 @@ export const FilterProvider = ({ children }) => {
     formation_searched: null,
   });
 
+  const resetFilters = () => {
+    setFilters({
+      annee: null,
+      academy: null,
+      departement: null,
+      commune: null,
+      region: null,
+      status_institution: null,
+      etablissement: null,
+      formation_selectivity: null,
+      formation: null,
+      repartition_geo_sector: null,
+      formation_searched: null,
+    });
+  };
+
   return (
-    <FilterContext.Provider value={{ filters, setFilters }}>
+    <FilterContext.Provider value={{ filters, setFilters, resetFilters }}>
       {children}
     </FilterContext.Provider>
   );

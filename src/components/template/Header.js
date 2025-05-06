@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../constants/constant';
 
 import { useNavigate } from 'react-router-dom';
+import { useFilters } from '../../hooks/FilterProvider';
 
 function ImportData({ onCompleted, endpoint = API_BASE_URL + `import-data/`, token, setLoading }) {
     const [file, setFile] = useState(null);
@@ -12,6 +13,9 @@ function ImportData({ onCompleted, endpoint = API_BASE_URL + `import-data/`, tok
     const [localLoading, setLocalLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
+
+    const { filters, setFilters, resetFilters } = useFilters();
+    
   
     const handleFileChange = (e) => {
       setFile(e.target.files[0]);
@@ -57,6 +61,7 @@ function ImportData({ onCompleted, endpoint = API_BASE_URL + `import-data/`, tok
   
     const handleSuccessConfirm = () => {
       onCompleted?.();
+      resetFilters();
       navigate('/dashboard');
     };
   
