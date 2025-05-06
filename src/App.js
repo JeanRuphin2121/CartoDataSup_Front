@@ -24,7 +24,7 @@ import AdmissionsRepartitionBoursierVsNonBoursier from './pages/user/insights/Ad
 import AdmissionsRepartitionFemales from './pages/user/insights/AdmissionsRepartitionFemales';
 import AdmissionsRepartitionBeforeProcedure from './pages/user/insights/AdmissionsRepartitionBeforeProcedure';
 import FormationsRepartionGeo from './pages/user/insights/FormationsRepartionGeo';
-import ImportData from './pages/user/insights/ImportData';
+import ImportData from './pages/ImportData';
 
 
 function App() {
